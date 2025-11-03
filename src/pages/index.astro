@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation';
+import Hero from '../components/Hero';
+import TrustBar from '../components/TrustBar';
+import AboutUs from '../components/AboutUs';
+import ServicesGrid from '../components/ServicesGrid';
+import ServiceAreas from '../components/ServiceAreas';
+import Reviews from '../components/Reviews';
+import Gallery from '../components/Gallery';
+import FAQ from '../components/FAQ';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
+import { Toaster } from '@/components/ui/toaster';
+import { Toaster as Sonner } from '@/components/ui/sonner';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import '../index.css';
+
+// FAQ Schema for SEO
+const faqs = [
+  {
+    question: "What roofing services do you provide?",
+    answer: "We provide comprehensive roofing services including full roof replacements, roof repairs and maintenance, chimney services, solar panel services, and guttering & roofline systems. Our services cover everything from emergency repairs to complete roof installations with premium materials and 10-year guarantee."
+  },
+  {
+    question: "How much does a roof replacement cost?",
+    answer: "Roof replacement costs vary depending on the size, roof type, materials used, and complexity of the job. We provide free, no-obligation quotes for all roofing work. Our quotes include detailed breakdowns of materials, labour, and any additional work required, with no hidden costs."
+  },
+  {
+    question: "What areas do you cover?",
+    answer: "We provide roofing services across Crosshouse, Kilmarnock and surrounding areas. Contact us to confirm coverage for your specific location and discuss your roofing project requirements."
+  },
+  {
+    question: "Do you offer emergency roof repairs?",
+    answer: "Yes, we provide emergency roof repair services for urgent situations such as storm damage, leaks, or structural issues. We understand that roofing emergencies can't wait, so we offer prompt response times to protect your property from further damage."
+  },
+  {
+    question: "What chimney services do you offer?",
+    answer: "We provide expert chimney services including chimney removal or rebuilding, chimney re-slating and flashing work, and stove flue installations for wood-burning stoves. Our skilled contractors ensure all chimney work meets safety standards and building regulations."
+  },
+  {
+    question: "Do you work with solar panels?",
+    answer: "Yes, we provide safe removal and reinstallation of solar panels, professional soft washing and cleaning of panels, and maintenance services. We understand the importance of protecting your solar investment during roofing work."
+  },
+  {
+    question: "What guttering services do you provide?",
+    answer: "We provide complete guttering and roofline services including installation of new uPVC gutters and downpipes, replacement of fascia and soffits, and fitting of dry verge and dry ridge systems. All work is completed to the highest standards with quality materials."
+  },
+  {
+    question: "How long does a typical roofing project take?",
+    answer: "Project duration depends on the size and complexity. Simple repairs typically take 1-2 days, while full roof replacements may take 3-7 days depending on weather conditions and roof size. We provide realistic timelines during the quote process and keep you updated throughout the project."
+  },
+  {
+    question: "Do you offer a guarantee on your work?",
+    answer: "Yes, we offer a comprehensive 10-year guarantee on all our roofing work. This covers both materials and workmanship, giving you peace of mind that your investment is protected. We're fully insured and committed to delivering quality work that lasts."
+  },
+  {
+    question: "Do you offer free quotes?",
+    answer: "Yes, we provide completely free, no-obligation quotes for all our roofing services. You can request a quote by calling +44 7930 951155, emailing us at remiroofing1@outlook.com, or using our contact form. We'll assess your needs and provide a detailed, transparent quote with no hidden costs."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<Layout>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+  <main class="min-h-screen">
+    <Navigation client:load />
+    <Hero client:load />
+    <TrustBar client:load />
+    <AboutUs client:load />
+    <ServicesGrid client:load />
+    <Gallery client:load />
+    <ServiceAreas client:load />
+    <Reviews client:load />
+    <FAQ client:load />
+    <ContactSection client:load />
+    <Footer client:load />
+    <TooltipProvider client:only="react">
+      <Toaster client:only="react" />
+      <Sonner client:only="react" />
+    </TooltipProvider>
+  </main>
+</Layout>

@@ -1,0 +1,315 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Remi Roofing | Professional Roofing Services Crosshouse Kilmarnock",
+  description = "Expert roofing services in Crosshouse, Kilmarnock & surrounding areas. Full roof replacements, repairs, chimney work, solar panel services & guttering. 10-year guarantee & free quotes.",
+  canonical = "https://remiroofingsolutions.co.uk/"
+} = Astro.props;
+
+const keywords = "roofing crosshouse, roofing kilmarnock, roof replacement kilmarnock, roof repairs crosshouse, chimney work kilmarnock, solar panel services crosshouse, guttering kilmarnock, roofing contractors ayrshire, emergency roof repairs kilmarnock, professional roofing crosshouse, roof maintenance kilmarnock, roofing specialists ayrshire, roof installation crosshouse, roofing services kilmarnock, roof contractors crosshouse";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "HomeImprovementContractor", "ContractorService"],
+  "name": "Remi Roofing",
+  "alternateName": "Remi Roofing Services",
+  "description": description,
+  "url": canonical,
+  "telephone": "+447930951155",
+  "email": "remiroofing1@outlook.com",
+  "foundingDate": "2020",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "27 Annandale Crescent",
+    "addressLocality": "Crosshouse",
+    "addressRegion": "Kilmarnock",
+    "addressCountry": "United Kingdom",
+    "postalCode": "KA2 0"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "55.6122",
+    "longitude": "-4.5506"
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Crosshouse",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Scotland"
+      }
+    },
+    {
+      "@type": "City",
+      "name": "Kilmarnock",
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": "Scotland"
+      }
+    }
+  ],
+  "serviceType": [
+    "Full Roof Replacement",
+    "Roof Repairs & Maintenance",
+    "Chimney Services",
+    "Solar Panel Services",
+    "Guttering & Roofline",
+    "Emergency Roof Repairs",
+    "Roofing Services",
+    "Roof Installation"
+  ],
+  "openingHours": [
+    "Mo 08:00-18:00",
+    "Tu 08:00-18:00",
+    "We 08:00-18:00",
+    "Th 08:00-18:00",
+    "Fr 08:00-18:00",
+    "Sa 09:00-16:00",
+    "Su 10:00-15:00"
+  ],
+  "priceRange": "$$",
+  "image": [
+    "https://remiroofingsolutions.co.uk/remilogo.png",
+    "https://remiroofingsolutions.co.uk/gallery/rgal1.jpg",
+    "https://remiroofingsolutions.co.uk/gallery/rgal2.jpg",
+    "https://remiroofingsolutions.co.uk/gallery/rgal3.jpg"
+  ],
+  "logo": "https://remiroofingsolutions.co.uk/remilogo.png",
+  "sameAs": [
+    "https://www.facebook.com/REMIROOFINDLTD"
+  ],
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Public Liability Insurance",
+      "description": "Fully insured for all decking and fencing work",
+      "credentialCategory": "insurance",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Insurance Provider"
+      }
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Professional Roofing Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full Roof Replacement",
+          "description": "Complete strip back to trusses or sarking boards with premium materials",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Remi Roofing"
+          }
+        },
+        "priceRange": "Quote on request"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Roof Repairs & Maintenance",
+          "description": "Professional roof repairs and ongoing maintenance services",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Remi Roofing"
+          }
+        },
+        "priceRange": "Quote on request"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Chimney Services",
+          "description": "Expert chimney removal, rebuilding and maintenance",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Remi Roofing"
+          }
+        },
+        "priceRange": "Quote on request"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Solar Panel Services",
+          "description": "Safe removal, reinstallation and maintenance of solar panels",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "Remi Roofing"
+          }
+        },
+        "priceRange": "Quote on request"
+      }
+    ]
+  },
+  "employee": {
+    "@type": "Person",
+    "name": "Remi Roofing Team",
+    "jobTitle": "Roofing Specialists",
+    "description": "Professional roofing contractors with years of experience"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "15",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Sarah Johnson"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Remi Roofing were absolutely brilliant! They completed our roof replacement project and the quality is outstanding. Professional, reliable, and great value for money. Would definitely use again and recommend to anyone needing roofing work.",
+      "datePublished": "2024-11-15"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Mike Thompson"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Excellent monoblocking installation! The team delivered on time and the workmanship is superb. Great communication throughout. Will definitely use again for future projects.",
+      "datePublished": "2024-11-10"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Lisa Brown"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "The team helped with our artificial grass installation and did an excellent job. Very professional and the quality of work is outstanding. Very reasonable price and highly recommend!",
+      "datePublished": "2024-11-05"
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "David Wilson"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "reviewBody": "Fantastic service! They completed our roof repair project and the work is exceptional. Very professional and delivered exactly what we wanted. Will definitely use again for future projects.",
+      "datePublished": "2024-10-28"
+    }
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "name": "Free Quote",
+      "description": "Complimentary, no-obligation quotes for all roofing projects",
+      "price": "0",
+      "priceCurrency": "GBP"
+    }
+  ],
+  "paymentAccepted": ["Cash", "Bank Transfer", "Cheque"],
+  "currenciesAccepted": "GBP"
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Remi Roofing" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="geo.region" content="GB-SCT" />
+    <meta name="geo.placename" content="Crosshouse, Kilmarnock, Scotland" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Enhanced JSON-LD Schema for LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    
+    <!-- Additional head content from pages -->
+    <slot name="head" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/remilogo.png" />
+    <link rel="alternate icon" href="/remilogo.png" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/remilogo.png" as="image" type="image/png" />
+    <link rel="preload" href="/hero window.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/aboutimg.webp" as="image" type="image/webp" />
+    
+    <!-- Google Fonts with font-display: swap for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TPYY95YN86" />
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TPYY95YN86');
+    </script>
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image:width" content="800" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://remiroofingsolutions.co.uk/remilogo.png" />
+    <meta property="og:image:alt" content="Remi Roofing Logo" />
+    <meta property="og:site_name" content="Remi Roofing" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://remiroofingsolutions.co.uk/remilogo.png" />
+    <meta name="twitter:image:alt" content="Remi Roofing Logo" />
+    
+    <!-- Additional meta tags for better social sharing -->
+    <meta name="theme-color" content="#FF6600" />
+    <meta name="msapplication-TileColor" content="#FF6600" />
+    <meta name="msapplication-TileImage" content="https://remiroofingsolutions.co.uk/remilogo.png" />
+  </head>
+
+  <body>
+    <slot />
+    <slot name="head" />
+  </body>
+</html>
+
