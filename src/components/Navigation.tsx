@@ -37,17 +37,20 @@ const Navigation = () => {
 
   const handleQuoteClick = () => {
     trackQuoteRequest('navigation_button', []);
-    scrollToSection("contact-form");
+    window.location.href = "/contact";
   };
 
+  const handleContactClick = () => {
+    window.location.href = "/#contact-form";
+  };
 
-  const navItems = [
-    { label: "Home", onClick: () => scrollToSection("hero") },
-    { label: "Services", onClick: () => scrollToSection("services") },
-    { label: "Gallery", onClick: () => scrollToSection("gallery") },
-    { label: "Reviews", onClick: () => scrollToSection("reviews") },
-    { label: "FAQ", onClick: () => scrollToSection("faq") },
-    { label: "Contact", onClick: () => scrollToSection("contact-form") },
+  const navItems: { label: string; id?: string; href?: string }[] = [
+    { label: "Home", id: "hero" },
+    { label: "Services", id: "services" },
+    { label: "Gallery", id: "gallery" },
+    { label: "Reviews", id: "reviews" },
+    { label: "FAQ", id: "faq" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -60,25 +63,49 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24">
-              <LazyImage
-                src="/remilogo.png"
-                alt="Remi Roofing logo"
-                className="w-full h-full object-contain"
-              />
-            </div>
+            <a 
+              href="/"
+              onClick={(e) => {
+                const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+                if (isHome) {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="cursor-pointer"
+            >
+              <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24">
+                <LazyImage
+                  src="/remilogo.png"
+                  alt="Remi Roofing logo"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </a>
           </div>
 
           {/* Desktop Navigation - Only on very large screens */}
           <div className="hidden xl:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
+              <a
                 key={item.label}
-                onClick={item.onClick}
-                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium"
+                href={item.href ?? `/#${item.id}`}
+                onClick={(e) => {
+                  if (item.id) {
+                    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+                    if (isHome) {
+                      e.preventDefault();
+                      scrollToSection(item.id);
+                    } else {
+                      // let the default navigation occur to "/#section"
+                      setIsMenuOpen(false);
+                    }
+                  }
+                }}
+                className="text-primary-foreground hover:text-primary-foreground/80 transition-colors duration-200 font-medium uppercase"
               >
                 {item.label}
-              </button>
+              </a>
             ))}
           </div>
 
@@ -126,9 +153,9 @@ const Navigation = () => {
             </Button>
             <Button
               onClick={handleQuoteClick}
-              className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary px-6 py-2 rounded-full font-semibold"
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-md font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 shiny-button relative overflow-hidden uppercase tracking-wide"
             >
-              Free Quote
+              GET A FREE QUOTE
             </Button>
           </div>
 
@@ -150,13 +177,27 @@ const Navigation = () => {
           <div className="xl:hidden bg-primary border-t border-primary-foreground/20">
             <div className="py-4 space-y-4">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.label}
-                  onClick={item.onClick}
-                  className="block w-full text-left px-4 py-2 text-primary-foreground hover:text-primary-foreground/80 hover:bg-primary-foreground/10 transition-colors duration-200"
+                  href={item.href ?? `/#${item.id}`}
+                  onClick={(e) => {
+                    if (item.id) {
+                      const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+                      if (isHome) {
+                        e.preventDefault();
+                        scrollToSection(item.id);
+                      } else {
+                        // navigate to home section; allow default
+                        setIsMenuOpen(false);
+                      }
+                    } else {
+                      setIsMenuOpen(false);
+                    }
+                  }}
+                  className="block w-full text-left px-4 py-2 text-primary-foreground hover:text-primary-foreground/80 hover:bg-primary-foreground/10 transition-colors duration-200 uppercase font-medium"
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
               <div className="px-4 pt-4 border-t border-primary-foreground/20 space-y-3">
                 <Button
@@ -174,9 +215,9 @@ const Navigation = () => {
                 </Button>
                 <Button
                   onClick={handleQuoteClick}
-                  className="w-full bg-primary-foreground hover:bg-primary-foreground/90 text-primary"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-md font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 shiny-button relative overflow-hidden uppercase tracking-wide"
                 >
-                  Get Free Quote
+                  GET A FREE QUOTE
                 </Button>
               </div>
             </div>

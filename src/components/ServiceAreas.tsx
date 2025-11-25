@@ -92,14 +92,11 @@ const ServiceAreas = () => {
                   Call +44 7930 951155
                 </a>
                 <a
-                  href="https://wa.me/447930951155"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackWhatsAppClick('service_areas')}
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-colors"
                 >
                   <WhatsAppIcon className="w-6 h-6" />
-                  WhatsApp Us
+                  Message Us
                 </a>
               </div>
             </div>

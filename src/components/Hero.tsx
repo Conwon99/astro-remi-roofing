@@ -9,6 +9,7 @@ import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import LazyImage from "@/components/LazyImage";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { trackPhoneCall, trackMessenger, trackQuoteRequest, trackFormInteraction, trackWhatsAppClick, trackPhoneCallClick } from "@/utils/analytics";
+import FacebookReview from "@/components/FacebookReview";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -85,8 +86,8 @@ const Hero = () => {
   };
 
   const handleMessengerClick = () => {
-    trackWhatsAppClick('hero_section');
-    window.open("https://wa.me/447930951155", "_blank");
+    trackQuoteRequest('hero_cta', []);
+    window.location.href = "/contact";
   };
 
   return (
@@ -108,8 +109,10 @@ const Hero = () => {
           {/* Text Content */}
           <div className="text-left space-y-6 sm:space-y-8">
             <div className="space-y-4 sm:space-y-6">
-              
-              <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg px-2">
+              <h1 className="text-xs sm:text-sm text-white font-bold uppercase tracking-[0.15em] px-2 sr-only sm:not-sr-only opacity-90 border-l-4 border-green-400 pl-3 py-1">
+                ROOFING SERVICES CROSSHOUSE KILMARNOCK
+              </h1>
+              <h2 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-tight drop-shadow-lg px-2">
                 <span className="relative inline-block text-white">
                   Professional
                   <img 
@@ -118,29 +121,33 @@ const Hero = () => {
                     className="absolute top-1/2 left-0 w-full h-12 sm:h-16 md:h-20 lg:h-24 object-contain -z-10 max-w-full"
                   />
                 </span> Roofing Services
-              </h1>
-              <h2 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white drop-shadow-lg flex items-center gap-3">
+              </h2>
+              <h3 className="font-display font-bold text-xl sm:text-2xl lg:text-3xl text-white drop-shadow-lg flex items-center gap-3">
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
                 Crosshouse, Kilmarnock & Surrounding Areas
-              </h2>
+              </h3>
               
               <p className="text-base sm:text-lg text-white/90 font-medium max-w-lg leading-relaxed drop-shadow-md px-2">
                 Expert roofing specialists serving Crosshouse, Kilmarnock and surrounding areas. Professional roof repairs, replacements, maintenance and emergency roofing services. Fully insured with 10-year guarantee and free quotes available.
               </p>
+              
+              {/* Reviews Badges */}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+                <FacebookReview reviewCount={39} className="shrink-0" />
+              </div>
             </div>
 
 
 
             {/* Quick Contact */}
             <div className="pt-4 border-t border-white/20">
-              <p className="text-white text-base sm:text-lg font-semibold mb-4 px-2">Give us a call or a Whatsapp for a <span className="font-bold text-green-400">FREE QUOTE</span></p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-md sm:max-w-none mx-auto lg:mx-0">
               <Button 
                 onClick={handleMessengerClick}
-                className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-6 sm:py-8 bg-green-600 hover:bg-green-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-6 sm:py-8 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-base sm:text-lg w-full sm:w-auto shiny-button relative overflow-hidden uppercase tracking-wide"
               >
                 <WhatsAppIcon className="w-6 h-6 sm:w-8 sm:h-8" />
-                WhatsApp
+                GET A FREE QUOTE
               </Button>
               <Button 
                 onClick={handleCallClick}

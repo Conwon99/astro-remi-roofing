@@ -43,7 +43,7 @@ const SERVICE_CARDS: ServiceCard[] = [
 
 const ServicesGrid = () => {
   const handleQuoteClick = () => {
-    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
+    window.location.href = "/contact";
   };
 
   return (
@@ -97,7 +97,7 @@ const ServicesGrid = () => {
 
                 <div className="mt-6">
                   <Button onClick={handleQuoteClick} className="w-full bg-gradient-to-r from-orange-400 to-orange-600 hover:from-orange-500 hover:to-orange-700 text-white font-semibold rounded-full">
-                    Request a Quote
+                    Request a Free Quote
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>

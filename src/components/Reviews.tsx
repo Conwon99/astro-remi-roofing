@@ -1,4 +1,4 @@
-import { Star, ArrowRight } from "lucide-react";
+import { Star, ArrowRight, Facebook } from "lucide-react";
 
 const Reviews = () => {
   const reviews = [
@@ -84,10 +84,10 @@ const Reviews = () => {
                 <h4 className="font-semibold text-gray-900 text-base">
                   {review.name}
                 </h4>
-                {/* Facebook logo placeholder */}
+                {/* Facebook logo */}
                 <div className="flex items-center justify-center gap-2">
                   <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs font-bold">f</span>
+                    <Facebook className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-xs text-gray-500">Facebook</span>
                 </div>
