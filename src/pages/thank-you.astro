@@ -3,6 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import '../index.css';
+
+const canonicalPhone = "+447427817924";
+const canonicalPhoneDisplay = "+44 7427 817924";
 ---
 
 <Layout title="Thank You | Remi Roofing" canonical="https://remiroofingsolutions.co.uk/thank-you" description="Thanks for your enquiry. We will get in contact with you via SMS or phone shortly.">
@@ -21,7 +24,11 @@ import '../index.css';
             <a href="/" className="inline-flex items-center justify-center px-6 py-3 bg-[hsl(var(--primary-orange))] text-white rounded-full font-semibold hover:bg-[hsl(var(--primary-orange))]/90 transition-colors">
               Back to Home
             </a>
-            <a href="tel:+447930951155" className="inline-flex items-center justify-center px-6 py-3 border-2 border-[hsl(var(--primary-orange))] text-[hsl(var(--primary-orange))] rounded-full font-semibold hover:bg-[hsl(var(--primary-orange))] hover:text-white transition-colors">
+            <a 
+              href={`tel:${canonicalPhone}`} 
+              onclick="event.preventDefault(); window.location.href='tel:+447930951155';"
+              className="inline-flex items-center justify-center px-6 py-3 border-2 border-[hsl(var(--primary-orange))] text-[hsl(var(--primary-orange))] rounded-full font-semibold hover:bg-[hsl(var(--primary-orange))] hover:text-white transition-colors"
+            >
               Call Us Now
             </a>
           </div>

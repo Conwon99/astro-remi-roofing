@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { trackPhoneCall, trackMessenger, trackQuoteRequest, trackFormInteraction, trackWhatsAppClick, trackPhoneCallClick } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +45,8 @@ const ContactSection = () => {
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
-          _subject: 'Free Quote Request from Website'
+          _subject: 'Free Quote Request from Website',
+          website_url: "https://remiroofingsolutions.co.uk",
         }),
       });
 
@@ -79,7 +81,8 @@ const ContactSection = () => {
 
   const handleCallClick = () => {
     trackPhoneCallClick('contact_section');
-    window.location.href = "tel:+447930951155";
+    // Use tracking number for actual calls (for analytics)
+    window.location.href = `tel:${PHONE_CONFIG.tracking.e164}`;
   };
 
   const handleMessengerClick = () => {

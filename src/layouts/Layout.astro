@@ -7,7 +7,7 @@ interface Props {
 
 const {
   title = "Remi Roofing | Professional Roofing Services Crosshouse Kilmarnock",
-  description = "Expert roofing services in Crosshouse, Kilmarnock & surrounding areas. Full roof replacements, repairs, chimney work, solar panel services & guttering. 10-year guarantee & free quotes.",
+  description = "Expert roofing services in Crosshouse, Kilmarnock. Full roof replacements, repairs, chimney work, solar panels & guttering. 10-year guarantee & free quotes.",
   canonical = "https://remiroofingsolutions.co.uk/"
 } = Astro.props;
 
@@ -25,11 +25,11 @@ const jsonLd = {
   "foundingDate": "2020",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "27 Annandale Crescent",
+    "streetAddress": "27 Annandale Cres",
     "addressLocality": "Crosshouse",
     "addressRegion": "Kilmarnock",
     "addressCountry": "United Kingdom",
-    "postalCode": "KA2 0"
+    "postalCode": "KA2 0EP"
   },
   "geo": {
     "@type": "GeoCoordinates",
@@ -310,6 +310,37 @@ const jsonLd = {
   <body>
     <slot />
     <slot name="head" />
+    <script is:inline>
+      // Phone number tracking - updates tel: links to use tracking number while keeping canonical display
+      (function() {
+        const canonicalE164 = "+447427817924";
+        const trackingE164 = "+447930951155";
+        
+        function updateTelLinks() {
+          const telLinks = document.querySelectorAll('a[href^="tel:"]');
+          telLinks.forEach(link => {
+            const href = link.getAttribute('href');
+            if (href && href.includes(canonicalE164)) {
+              link.setAttribute('href', href.replace(canonicalE164, trackingE164));
+            }
+          });
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateTelLinks);
+        } else {
+          updateTelLinks();
+        }
+        
+        // Watch for dynamically added content (React hydration)
+        const observer = new MutationObserver(updateTelLinks);
+        observer.observe(document.body, { childList: true, subtree: true });
+        
+        setTimeout(updateTelLinks, 100);
+        setTimeout(updateTelLinks, 500);
+        setTimeout(updateTelLinks, 1000);
+      })();
+    </script>
   </body>
 </html>
 

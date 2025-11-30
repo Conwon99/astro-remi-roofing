@@ -10,6 +10,7 @@ import LazyImage from "@/components/LazyImage";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { trackPhoneCall, trackMessenger, trackQuoteRequest, trackFormInteraction, trackWhatsAppClick, trackPhoneCallClick } from "@/utils/analytics";
 import FacebookReview from "@/components/FacebookReview";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const Hero = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,8 @@ const Hero = () => {
           email: formData.email,
           service: formData.service,
           message: formData.message,
-          _subject: 'Free Quote Request from Website'
+          _subject: 'Free Quote Request from Website',
+          website_url: "https://remiroofingsolutions.co.uk",
         }),
       });
 
@@ -82,7 +84,8 @@ const Hero = () => {
 
   const handleCallClick = () => {
     trackPhoneCallClick('hero_section');
-    window.location.href = "tel:+447930951155";
+    // Use tracking number for actual calls (for analytics)
+    window.location.href = `tel:${PHONE_CONFIG.tracking.e164}`;
   };
 
   const handleMessengerClick = () => {
@@ -158,7 +161,7 @@ const Hero = () => {
                 </div>
                 <div className="flex flex-col items-center sm:items-start">
                   <span className="text-xs sm:text-sm text-gray-300 font-medium">CALL US NOW</span>
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">+44 7930 951155</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">{PHONE_CONFIG.tracking.display}</span>
                 </div>
               </Button>
               </div>

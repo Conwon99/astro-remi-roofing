@@ -1,6 +1,7 @@
 import { MapPin } from "lucide-react";
 import WhatsAppIcon from "@/components/WhatsAppIcon";
 import { trackPhoneCall, trackMessenger, trackWhatsAppClick, trackPhoneCallClick } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const ServiceAreas = () => {
   const serviceAreas = [
@@ -85,11 +86,13 @@ const ServiceAreas = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="tel:+447930951155"
-                  onClick={() => trackPhoneCallClick('service_areas')}
+                  href={`tel:${PHONE_CONFIG.tracking.e164}`}
+                  onClick={() => {
+                    trackPhoneCallClick('service_areas');
+                  }}
                   className="inline-flex items-center justify-center px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  Call +44 7930 951155
+                  Call {PHONE_CONFIG.tracking.display}
                 </a>
                 <a
                   href="/contact"

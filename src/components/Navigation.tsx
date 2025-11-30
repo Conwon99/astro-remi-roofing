@@ -3,6 +3,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import LazyImage from "@/components/LazyImage";
 import { trackPhoneCall, trackNavigation, trackQuoteRequest, trackPhoneCallClick } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,7 +27,8 @@ const Navigation = () => {
 
   const handleCallClick = () => {
     trackPhoneCallClick('navigation');
-    window.location.href = "tel:+447930951155";
+    // Use tracking number for actual calls (for analytics)
+    window.location.href = `tel:${PHONE_CONFIG.tracking.e164}`;
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -121,7 +123,7 @@ const Navigation = () => {
               </div>
               <div className="flex flex-col items-start">
                 <span className="text-xs text-gray-300 font-medium">CALL US NOW</span>
-                <span className="text-lg font-bold text-white">+44 7930 951155</span>
+                    <span className="text-lg font-bold text-white">{PHONE_CONFIG.tracking.display}</span>
               </div>
             </Button>
             <button
@@ -148,7 +150,7 @@ const Navigation = () => {
               </div>
               <div className="flex flex-col items-start">
                 <span className="text-xs text-gray-300 font-medium">CALL US NOW</span>
-                <span className="text-3xl font-bold text-white">+44 7930 951155</span>
+                <span className="text-3xl font-bold text-white">{PHONE_CONFIG.tracking.display}</span>
               </div>
             </Button>
             <Button
@@ -210,7 +212,7 @@ const Navigation = () => {
                   </div>
                   <div className="flex flex-col items-start">
                     <span className="text-xs text-gray-300 font-medium">CALL US NOW</span>
-                    <span className="text-3xl font-bold text-white">+44 7930 951155</span>
+                    <span className="text-3xl font-bold text-white">{PHONE_CONFIG.tracking.display}</span>
                   </div>
                 </Button>
                 <Button

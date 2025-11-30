@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Facebook } from "lucide-react";
 import { trackExternalLink, trackFacebookClick, trackPhoneCallClick } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -25,11 +26,13 @@ const Footer = () => {
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-white flex-shrink-0" />
                 <a 
-                  href="tel:+447930951155" 
-                  onClick={() => trackPhoneCallClick('footer')}
+                  href={`tel:${PHONE_CONFIG.tracking.e164}`}
+                  onClick={() => {
+                    trackPhoneCallClick('footer');
+                  }}
                   className="text-white hover:text-gray-300 transition-colors text-sm sm:text-base"
                 >
-                  07930 951155
+                  {PHONE_CONFIG.tracking.short}
                 </a>
               </div>
               <div className="flex items-center gap-3">
@@ -40,7 +43,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-white flex-shrink-0" />
-                <span className="text-white text-sm sm:text-base">27 Annandale Crescent, Crosshouse, Kilmarnock</span>
+                <span className="text-white text-sm sm:text-base">27 Annandale Cres, Crosshouse, Kilmarnock KA2 0EP</span>
               </div>
             </div>
           </div>

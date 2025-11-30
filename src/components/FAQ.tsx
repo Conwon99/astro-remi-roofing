@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { trackPhoneCall, trackPhoneCallClick } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -52,7 +53,7 @@ const FAQ = () => {
     },
     {
       question: "Do you offer free quotes?",
-      answer: "Yes, we provide completely free, no-obligation quotes for all our roofing services. You can request a quote by calling +44 7930 951155, emailing us at remiroofing1@outlook.com, or using our contact form. We'll assess your needs and provide a detailed, transparent quote with no hidden costs."
+      answer: `Yes, we provide completely free, no-obligation quotes for all our roofing services. You can request a quote by calling ${PHONE_CONFIG.tracking.display}, emailing us at remiroofing1@outlook.com, or using our contact form. We'll assess your needs and provide a detailed, transparent quote with no hidden costs.`
     }
   ];
 
@@ -102,11 +103,13 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+447930951155"
-                onClick={() => trackPhoneCallClick('faq_section')}
+                href={`tel:${PHONE_CONFIG.tracking.e164}`}
+                onClick={() => {
+                  trackPhoneCallClick('faq_section');
+                }}
                 className="inline-flex items-center justify-center px-6 py-3 bg-[hsl(var(--primary-orange))] text-white rounded-full font-semibold hover:bg-[hsl(var(--primary-orange))]/90 transition-colors"
               >
-                Call +44 7930 951155
+                Call {PHONE_CONFIG.tracking.display}
               </a>
               <button
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}

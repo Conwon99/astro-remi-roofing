@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { trackQuoteRequest, trackFormInteraction } from "@/utils/analytics";
+import { PHONE_CONFIG } from "@/config/phone";
 
 const QuoteForm = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,8 @@ const QuoteForm = () => {
           name: formData.name,
           phone: formData.phone,
           message: formData.message,
-          _subject: 'Free Quote Request from Contact Page'
+          _subject: 'Free Quote Request from Contact Page',
+          website_url: "https://remiroofingsolutions.co.uk",
         }),
       });
 
@@ -94,7 +96,7 @@ const QuoteForm = () => {
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
               required
               className="mt-2 rounded-xl border-2 text-base sm:text-lg h-12"
-              placeholder="+44 7930 951155"
+                placeholder={PHONE_CONFIG.tracking.display}
             />
           </div>
 
