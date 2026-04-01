@@ -42,6 +42,14 @@ const Gallery = () => {
     {
       src: "/gallery/rgal9.jpg",
       alt: "Quality roofing solutions and craftsmanship"
+    },
+    {
+      src: "/gallery/remi1.jpeg",
+      alt: "Recent roofing project completed by Remi Roofing"
+    },
+    {
+      src: "/gallery/remi2.jpeg",
+      alt: "Professional roofing workmanship from Remi Roofing"
     }
   ];
 
