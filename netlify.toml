@@ -3,7 +3,7 @@
   command = "npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # Astro uses file-based routing, no SPA redirects needed
 # 404 pages are handled by src/pages/404.astro
