@@ -8,6 +8,7 @@ import ServicesGrid from '../components/ServicesGrid';
 import ServiceAreas from '../components/ServiceAreas';
 import Reviews from '../components/Reviews';
 import Gallery from '../components/Gallery';
+import InstagramPost from '../components/InstagramPost';
 import FAQ from '../components/FAQ';
 import ContactSection from '../components/ContactSection';
 // If switching to a dedicated CTA component later, import it here instead
@@ -86,6 +87,7 @@ const faqSchema = {
     <AboutUs client:load />
     <ServicesGrid client:load />
     <Gallery client:load />
+    <InstagramPost client:visible />
     <ServiceAreas client:load />
     <Reviews client:load />
     <FAQ client:load />
